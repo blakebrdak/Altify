@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Altify</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{url_value}}">Settings</a></li>
+                <!-- Replace 'other_url_name' with the actual name of the URL you want to link to -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Welcome to Your Page</h1>
+            <form method="post" action="get_url/">
+                {% csrf_token %}
+                <label for="input_field">Enter Something:</label>
+                <input type="text" id="input1" name="input1" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

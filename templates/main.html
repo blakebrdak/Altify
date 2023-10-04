@@ -3,6 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <title>Altify</title>
+    <style>
+        /* Reset some default styling in browsers */
+        body, h1, ul, li, form, label {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style the body */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        /* Style the header */
+        header {
+            background: #50b3a2;
+            color: #ffffff;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        /* Style navigation */
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline; /* Align links horizontally */
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        /* Style main content */
+        main {
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+
+        /* Style form */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label, input, button {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #50b3a2;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4a9188;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,10 +89,10 @@
 
     <main>
         <div class="container">
-            <h1>Welcome to Your Page</h1>
+            <h1>Welcome to Altify!</h1>
             <form method="post" action="get_url/">
                 {% csrf_token %}
-                <label for="input_field">Enter Something:</label>
+                <label for="input_field">Enter the Website:</label>
                 <input type="text" id="input1" name="input1" required>
                 <button type="submit">Submit</button>
             </form>

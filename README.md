@@ -18,3 +18,5 @@
 - Update the web page content after generating all the alt text
 
 **Sample Usage:**
+https://drive.google.com/file/d/1M37ob1FQdyUqBxGXnXxI3HQ9LB5gKfby/view?usp=sharing
+https://drive.google.com/file/d/1Wayc_xwPMs8kRpi4XCvUM9ZwDHKb_DLG/view?usp=sharing

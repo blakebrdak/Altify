@@ -18,7 +18,3 @@
 - Update the web page content after generating all the alt text
 
 **Sample Usage:**
-
-![image-20231007234711434](C:\Users\Belinda\AppData\Roaming\Typora\typora-user-images\image-20231007234711434.png)
-
-![image-20231007235023242](C:\Users\Belinda\AppData\Roaming\Typora\typora-user-images\image-20231007235023242.png)

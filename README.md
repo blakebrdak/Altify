@@ -10,7 +10,7 @@
 - Find the images lacking alt text and save the responses from genAI API to their "img.alt".
 - The max number of response tokens can be adjusted in content.js.
 
-**Usage:** In the content.js file,  find`"const API_KEY = "openAIAPI"; "`, replace openAIAPI with the actual OpenAI API Key. This line can be modified later cause we had better not hard coding the API Key into this script for security. 
+**Usage:** In the content.js file,  find`"const API_KEY = "openAIAPI"; "`, replace openAIAPI with the actual OpenAI API Key. This line can be modified later cause we had better not hard coding the API Key into this script for security. I have an OpenAI API Key now. If you guys prefer to share an API key, then I could share the key number. 
 
 **Next Step:** 
 

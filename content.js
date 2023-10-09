@@ -3,8 +3,9 @@ async function processImages() {
 
     for (let img of images) {
         if (!img.alt || img.alt === "") {
-            // let labels = ['cat', 'dog'];
-            img.alt = "This image was missing alt text... bummer.";
+            fileName = img.src
+            let labels = labelDetection(fileName);
+            img.alt = "Generated labels:"+labels.join();
             console.log(img.alt);
             const maxWordCount = 300;
             extractKeyContentAndTrim(img, maxWordCount);

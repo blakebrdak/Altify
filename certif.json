@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "rapid-hangar-400218",
+  "private_key_id": "6ecfd79e051c312e8ee4d2398b7a72f7e52d3175",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCvVZP3Wyqshq+g\n+3W+B8KhckkFa9ODZCBxxkU5hZtS/Ntn33aXxBpwZV555svtj0yJYdMkrrYU5bdC\n1FLIKn9mm2qrp44+FIVc4oXXAXYnrmoCd4k/lrhYsn00Gvb4ut2HIO5b6mNJk7+I\nGQk5w/2V8eKBsUBcid1X3MJQKLGu0t4AheeoGj/tXR6Ou9bwuSFbxmwR9fU+Xy28\n5q47Zj8mVwKJCd/GLZnhnfVv8sOyhMMq4q2FmrOYxCmJXNJzjCW/Mr/N9q7lwQTz\nfeapD+MzUizqfCEcl8tnv/0m0cgc6fgnjpn1gRp69uCf5qL+8zXr0mG4sfPq+kGK\nIn1fdlEjAgMBAAECggEAFGf94iaSp2S/kRljITxO+zJNbFuZ0Ot42TUNvn2dz8FN\nGeBIsa4ps5YgskhZyKrKahzgEZ9h4rm/pAAJKHHFxR/mgNbt96y0vtRAZn8tjL3A\nacwWxbdZej0/1C4lO1qoSL9c7oavipMvEfxz9eypGWf/CEAkcQC8qaqwVNr/nwyL\nXC4jw3SjJhidJmKmhrxDD1YTKQ6PXxqok/9GrLnK6bX0ONZB0UnI4crLmQLtiQlJ\nsWQpXHXhnGDTSjRRZ6DW87yXoaXApfJ0eHTIEGch1f6gDcglns1D5PjY+Tp2uA/E\nSAoP8tBMaAn2/PCts1UmuSiK5Lr5yaJlVco3CLAgqQKBgQDdSw8cHpYgyF/m6VQ2\nGuk0aCMtyXQ4vm003RVArcnP9O6bpLeq2x/c+mFWqEj55xgttQkVBgE1O+4EpOLj\n9PyT9u5dmrfkGT4SfED0saW/6wN9DgFbpn7zJJx0Kg+wxILXIHo/WtN+xS88lISd\nNOW4huE0wynYSOcMttV3nRcxeQKBgQDK1UPIE7bQkPOkytEz8dPTY+8lRkjEFFeL\nM+XPwfyjKjJAKt7p1jUvaraGHidUBio4+N374/X9fVxoBFt4QSqTjv2jQOjCyZaM\n8P7NlAdWemr6ju0SlxwgmU2XUOs9rFO33YAf1whSLfSlxrDsiGz5WRXkPHiRWc7o\nOpr6WebsewKBgBc4khxURVKpVA7p+xE2X7RFHTPnyM9PhCwg6uL/mYa93+/rJ+7A\n0aYhi+dI/2dhzZK2RX60Q5ovcLmCB+D9yydHqRmfa55+25ma+kHzBj6OTa5ostHI\nNdgTxmsWItFcvZIPcWSGhlzuGhfUSdopO9XSKX2c4R42ADDAWsQTcuSZAoGBAKG6\nqvE9xudGrP8ZOPZSPLSxWl4+TIcMMUGtf/DInMj9PFQt2tBZHM9SJ3eJU5KL197V\nkSrn+ZzF+Ih38PdR/sDpoxQpDW9DjeeTwZfqEG/D7MkcbawFEUhs9JFS1D+4yIgy\n9ZZtvxTHz+rfIvN3VGz9u5bhIMHE+lXxZOF6DcdBAoGAPGlUJRm0twZk0nTKyv4R\nRqlo1LlDUgOKfqSyF+j6+bCBP0CQ8INfa4qP/gEeV6N8dPwal3CnlJce6+4fVS5a\n1ZCmAo6uhXFzvGHoZC28se8fA4ZQaS/8KDb/hTSu0sqToKV+9Hz1JbExQt48u+M0\n9UljuiuZ2S7jrY76bOq6NL8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "altifycloudvisionapi@rapid-hangar-400218.iam.gserviceaccount.com",
+  "client_id": "106422983346518072566",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/altifycloudvisionapi%40rapid-hangar-400218.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

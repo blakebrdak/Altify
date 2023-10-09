@@ -14,15 +14,12 @@
     },
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "js": ["content.js"]
+        "js": ["CloudVisionApi.js","content.js"]
     }],
     "permissions": [
       "activeTab",
       "contextMenus",
       "storage"
-    ]    
-
-  }
-
-
-
+    ],
+    "options_page": "option.html"
+}

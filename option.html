@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #2C3E50;
+            padding: 1em;
+            text-align: center;
+            color: white;
+        }
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+            background: #3498DB;
+            text-align: center;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 0 15px;
+            display: inline-block;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2C3E50;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #bdc3c7;
+            width: 100%;
+        }
+
+        p {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498DB;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2980B9;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <h1>Welcome to Your Page</h1>
+            <form method="post">
+                <div>
+                    <label for="input1">Input 1:</label>
+                    <input type="text" id="input1" name="input1" required>
+                    <p>This is the first input field.</p>
+                </div>
+                <div>
+                    <label for="input2">Input 2:</label>
+                    <input type="text" id="input2" name="input2" required>
+                    <p>This is the second input field.</p>
+                </div>
+                <div>
+                    <label for="input3">Input 3:</label>
+                    <input type="text" id="input3" name="input3" required>
+                    <p>This is the third input field.</p>
+                </div>
+                <div>
+                    <label for="input4">Input 4:</label>
+                    <input type="text" id="input4" name="input4" required>
+                    <p>This is the fourth input field.</p>
+                </div>
+                <div>
+                    <label for="input5">Input 5:</label>
+                    <input type="text" id="input5" name="input5" required>
+                    <p>This is the fifth input field.</p>
+                </div>
+                <button type="submit" id="saveButton">Submit</button>
+            </form>
+            <div id="status"></div>
+        </div>
+    </main>
+    <script src="option.js"></script>
+</body>
+</html>

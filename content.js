@@ -3,15 +3,15 @@ async function processImages() {
 
     for (let img of images) {
         if (!img.alt || img.alt === "") {
-            fileName = img.src
-            let labels = labelDetection(fileName);
-            img.alt = "Generated labels:"+labels.join();
-            console.log(img.alt);
+            // fileName = img.src
+            // let labels = labelDetection(fileName);
+            // img.alt = "Generated labels:"+labels.join();
+            // console.log(img.alt);
             const maxWordCount = 300;
             extractKeyContentAndTrim(img, maxWordCount);
         }
     }
-    
+    chrome.runtime.sendMessage({status: "completed", message: "Content script has finished running!"});
 }
 
 // Call the function to process images

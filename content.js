@@ -3,15 +3,15 @@ async function processImages() {
 
     for (let img of images) {
         if (!img.alt || img.alt === "") {
-            // fileName = img.src
-            // let labels = labelDetection(fileName);
-            // img.alt = "Generated labels:"+labels.join();
-            // console.log(img.alt);
+            // let labels = ['cat', 'dog'];
+            img.alt = "This image was missing alt text... bummer.";
+            console.log(img.alt);
             const maxWordCount = 300;
             extractKeyContentAndTrim(img, maxWordCount);
         }
     }
-    chrome.runtime.sendMessage({status: "completed", message: "Content script has finished running!"});
+    chrome.runtime.sendMessage({status: "completed", message: "Content script has finished running!"}, response => {
+    console.log(response);});
 }
 
 // Call the function to process images
@@ -33,7 +33,7 @@ async function extractKeyContentAndTrim(img, maxWordCount) {
             // Trim the content to the specified word count
             const words = content.split(/\s+/);
             const trimmedContent = words.slice(0, maxWordCount).join(' ');
-            img.alt = await openAI_API_Completions( `Give a summary of the following web content:\n${trimmedContent}`);  
+            img.alt = await openAI_API_Completions( `Give a summary of the following web content:\n${trimmedContent}`);
             console.log(await img.alt);
         } else {
             img.alt = await openAI_API_Completions(prompt);
@@ -49,7 +49,7 @@ async function extractKeyContentAndTrim(img, maxWordCount) {
 // Function to make an asynchronous API call to the OpenAI API
 // may need to avoid hard coding the openAI key in this script
 async function openAI_API_Completions(prompt) {
-    const API_KEY = "openAIAPI";  // Replace with OpenAI API key
+    const API_KEY = "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";  // Replace with OpenAI API key
     // Ensure the API key is provided
     if (!API_KEY) {
         console.error("Please provide your OpenAI API key.");
@@ -79,7 +79,7 @@ async function openAI_API_Completions(prompt) {
     } catch (error) {
         console.error("ERROR: " + error);
     }
-    
+
 }
 
 function createResponse(json) {
@@ -99,4 +99,3 @@ function removePeriod(json) {
     });
     return json;
 }
-

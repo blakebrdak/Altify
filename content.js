@@ -49,7 +49,7 @@ async function extractKeyContentAndTrim(img, maxWordCount) {
 // Function to make an asynchronous API call to the OpenAI API
 // may need to avoid hard coding the openAI key in this script
 async function openAI_API_Completions(prompt) {
-    const API_KEY = "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";  // Replace with OpenAI API key
+    const API_KEY = "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";  // Replace with OpenAI API key
     // Ensure the API key is provided
     if (!API_KEY) {
         console.error("Please provide your OpenAI API key.");
@@ -99,3 +99,4 @@ function removePeriod(json) {
     });
     return json;
 }
+

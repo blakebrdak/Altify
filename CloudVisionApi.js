@@ -7,7 +7,7 @@ const client = new vision.ImageAnnotatorClient();
 // const fileName = '/Users/marsh/Desktop/code/eecs495/cat-sleep-in-blanket.jpeg'; // local file
 const fileName = 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'; // public https file
 
-process.env.GOOGLE_APPLICATION_CREDENTIALS = 'certif.json';
+process.env.GOOGLE_APPLICATION_CREDENTIALS = '/Users/marsh/Desktop/code/eecs495/cloud vision key/rapid-hangar-400218-6ecfd79e051c.json';
 
 async function labelDetection(fileName) {
   try {

@@ -66,7 +66,7 @@ saveButton.addEventListener('click', () => {
       }
     });
 
-
+    alert('save successfully!')
   document.getElementById('status').textContent = 'save successfully!';
   setTimeout(() => {document.getElementById('status').textContent = '';}, 800);
 });

@@ -1,18 +1,11 @@
 // Azure Vision AI API endpoint
-const endpoint = 'https://altifyimagecaptioning.cognitiveservices.azure.com/vision/v3.1/analyze';
+const endpoint = 'https://altifyimagecaptioning.cognitiveservices.azure.com/vision/v3.1/analyze?visualFeatures=Description&language=en';
 
 // API key or subscription key
 const subscriptionKey = '74126c3d9f5c4f0c8c4c43cfeaca8474';
 
 // Image URL as public https
 const imageUrl = 'https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/media/quickstarts/presentation.png'; // or you can use binary image data
-
-// Request parameters
-const params = {
-    visualFeatures: '', // You can customize this
-    details: 'Celebrities, Landmarks',
-    language: 'en',
-};
 
 // Request headers
 const headers = new Headers({
@@ -23,7 +16,6 @@ const headers = new Headers({
 // Request body
 const requestBody = {
     url: imageUrl, // You can also use 'binary' if you're sending image data instead of a URL.
-    params: params,
 };
 
 // Construct the request
@@ -42,6 +34,7 @@ async function analyzeImage() {
                 return response.text();
             } else {
                 // display response status text in the console if an error occurs
+                console.log('\n-----ERROR Response from Azure-----\n');
                 console.log(response)
                 console.log(response.status);
                 console.log(response.statusText);
@@ -51,11 +44,12 @@ async function analyzeImage() {
         .then(data => {
             // Handle the response data here
             console.log('\n-----Response from Azure-----\n');
+            data = JSON.parse(data);
             console.log(data);
 
-            // Access and log the description
-            const description = data.description.captions[0].text;
-            console.log('Image Description:', description);
+            // Display the image caption
+            console.log('\n-----Image Caption-----\n');
+            console.log(data.description.captions[0].text);
         })
         .catch(error => {
             // Handle any errors

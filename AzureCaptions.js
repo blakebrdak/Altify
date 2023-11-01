@@ -1,24 +1,15 @@
-
-
-// Get the visual feature for analysis
-// list of possible features
-// ['Categories','Brands','Adult','Color','Description','Faces','Image_type','Objects','Tags'];
-// const features = ['Categories','Brands','Adult','Color','Description','Faces','Image_type','Objects','Tags']; // set visual features to return image description
-// const domainDetails = ['Celebrities','Landmarks']; // allows for more detailed description by including celebrities and landmarks
-// language = 'en'; // set language to english
-
 // Azure Vision AI API endpoint
-const endpoint = 'https://altifyimagecaptioning.cognitiveservices.azure.com/vision/v3.0/analyz';
+const endpoint = 'https://altifyimagecaptioning.cognitiveservices.azure.com/vision/v3.1/analyze';
 
 // API key or subscription key
-const subscriptionKey = '10ee63fbd0fb40eb8fd5b353f06b0f13';
+const subscriptionKey = '74126c3d9f5c4f0c8c4c43cfeaca8474';
 
 // Image URL as public https
-const imageUrl = 'https://etherjump.game/assets/whiteLogo.png'; // or you can use binary image data
+const imageUrl = 'https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/media/quickstarts/presentation.png'; // or you can use binary image data
 
 // Request parameters
 const params = {
-    visualFeatures: 'Categories, Description, Tags, Caption', // You can customize this
+    visualFeatures: '', // You can customize this
     details: 'Celebrities, Landmarks',
     language: 'en',
 };
@@ -42,18 +33,16 @@ const request = new Request(endpoint, {
     headers: headers,
     body: JSON.stringify(requestBody),
 });
-    
-console.log(request);
-
 
 // Make the API call
 async function analyzeImage() {
     fetch(request)
-        .then(response => {
+        .then((response) => {
             if (response.ok) {
-                return response.json();
+                return response.text();
             } else {
                 // display response status text in the console if an error occurs
+                console.log(response)
                 console.log(response.status);
                 console.log(response.statusText);
                 throw new Error('Request failed.');
@@ -61,6 +50,7 @@ async function analyzeImage() {
         })
         .then(data => {
             // Handle the response data here
+            console.log('\n-----Response from Azure-----\n');
             console.log(data);
 
             // Access and log the description
@@ -73,5 +63,5 @@ async function analyzeImage() {
         });
 }
 
-
+// test(endpoint);
 analyzeImage();

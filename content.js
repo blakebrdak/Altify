@@ -4,12 +4,12 @@ async function testUpload(url){
       method: 'POST',
       redirect: 'follow'
     };
-
+    
     result = await fetch("http://localhost:8000/uploadImage?url="+url, requestOptions);
     return result.text();
       // .then(response => response.text())
       // .then(result => console.log(result), console.log(url))
-      // .catch(error => console.log('error', error));
+      // .catch(error => console.log('error', error));      
 }
 
 function createResponse(json) {
@@ -73,16 +73,16 @@ for (img of images){
     const labels = testUpload(img.src);
     output = 'test';
     labels.then(function(result){
-      if (result.length !== 2){
+      if (result.length != 2){
         console.log("alt text generated for image: " + result);
         img.alt = result;
         // for the length of the result, add each label to the prompt
         // const prompt = "Give a brief 15 word description for an image with the following labels: " + result;
         // // print out all the labels from the result individually
-
+        
         // openAI_API_Completions(prompt).then(function(result){
         //   console.log("alt text generated:" + result);
-
+        
         // });
       }
       else {
@@ -91,6 +91,6 @@ for (img of images){
     });
   }
 }
-chrome.runtime.sendMessage({status: "completed", message: "Content script has finished running!"}, response => {console.log(response);});
+
 
 // end of main code

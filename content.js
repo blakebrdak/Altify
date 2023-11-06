@@ -74,6 +74,11 @@ async function main(){
     for (img of images){
         // if the image does not have alt text
         if (!img.alt || img.alt === "") {
+            // check image is larger than 50px by 50px
+            if (img.width < 50 || img.height < 50) { // there is a limit on image size for the API
+                console.log("Image is too small to generate alt text.");
+                continue; // skip this image
+            }
             // set the alt text to a default message
             img.alt = "This image was missing alt text... bummer.";
             // get the labels for the image

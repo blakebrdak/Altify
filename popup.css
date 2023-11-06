@@ -2,31 +2,3 @@ body {
     width: 200px;
     height: 200px;
 }
-
-.header_wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    width: 100%
-}
-
-.logo {
-    width: 100%;
-}
-
-.button_wrapper {
-    display: flex;
-    flex-direction: column;
-}
-
-button {
-    padding: 4px;
-    border: 2px solid black;
-    margin: auto;
-    margin-top: 20px;
-    width: 65%;
-    height: 30px;
-}
-
-button:hover {
-    background-color: gray
-}

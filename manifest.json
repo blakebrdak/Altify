@@ -16,11 +16,13 @@
         "matches": ["<all_urls>"],
         "js": ["content.js"]
     }],
-    
     "permissions": [
       "activeTab",
       "contextMenus",
       "storage"
-    ],
-    "options_page": "option.html"
-}
+    ]    
+
+  }
+
+
+

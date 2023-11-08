@@ -1,6 +1,32 @@
 // Description: This file contains the code to make the API call to Azure Cognitive Services Computer Vision API
 
 // Make the API call
+let input1;
+let input2;
+let input3;
+let input4;
+let input5;
+let array = [input1, input2, input3, input4, input5]
+
+function getValue(argName) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.sync.get(argName, function (data) {
+            if (data[argName] !== undefined) {
+                resolve(data[argName]);
+            } else {
+                reject('No value found for'+argName);
+            }
+        });
+    });
+}
+async function useGlobalVarAsync() {
+    input1 = await getValue('userInput1')
+    input2 = await getValue('userInput2')
+    input3 = await getValue('userInput3')
+    input4 = await getValue('userInput4')
+    input5 = await getValue('userInput5')
+}
+
 async function analyzeImage(imageUrl) {
   console.log('\n-----Request to Azure-----\n');
   console.log(imageUrl);
@@ -65,12 +91,9 @@ async function analyzeImage(imageUrl) {
       });
 } // end analyzeImage
 
-
-
 async function main(){
     // get all the images on the current web page
     let images = document.getElementsByTagName('img');
-
     for (img of images){
         // if the image does not have alt text
         if (!img.alt || img.alt === "") {
@@ -83,5 +106,5 @@ async function main(){
         }
     }
 } // end main
-
-main();
+useGlobalVarAsync()
+// main();

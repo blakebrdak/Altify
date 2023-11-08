@@ -72,9 +72,6 @@ saveButton.addEventListener('click', () => {
 });
 
 window.onload = function() {
-  chrome.storage.sync.get('key_i', (data) => {
-      console.log(data)
-    });
   for (let i = 0; i < array.length; i++) {
     let key_i = 'userInput' + String(i)
     chrome.storage.sync.get(key_i, (data) => {

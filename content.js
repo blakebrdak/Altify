@@ -65,23 +65,75 @@ async function analyzeImage(imageUrl) {
       });
 } // end analyzeImage
 
-
+async function azure_call(imgURL) {
+    const url = "https://us-central1-altify-404015.cloudfunctions.net/Azure-Request-Middleman";
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Set the content type for JSON data
+        },
+        body: `{"url": "${imgURL}"}` // Convert the data to JSON format
+      })
+        .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+        return response.text(); // or response.text() for plain text
+        })
+        .then(data => {
+          return data;
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+        });
+    return response;
+}
 
 async function main(){
     // get all the images on the current web page
     let images = document.getElementsByTagName('img');
 
-    for (img of images){
-        // if the image does not have alt text
-        if (!img.alt || img.alt === "") {
-            // set the alt text to a default message
-            img.alt = "This image was missing alt text... bummer.";
-            // get the labels for the image
-            const imageDescription = await analyzeImage(img.src);
-            // set the alt text to the labels
-            img.alt = "alt text generated for image: " + imageDescription;
-        }
+    // for (img of images){
+    //     // if the image does not have alt text
+    //     if (!img.alt || img.alt === "") {
+    //         // set the alt text to a default message
+    //         //img.alt = "This image was missing alt text... bummer.";
+    //         // get the labels for the image
+    //         azure_call(img.src)
+    //             .then(imageDescription => {
+    //                 // set the alt text to the labels
+    //                 console.log("imageDesc: ", imageDescription)
+    //                 img.alt = "alt text generated for image: " + imageDescription;
+    //             })
+            
+    //     }
+    // }
+    const imagePromises = [];
+
+    for (const img of images) {
+      // If the image does not have alt text
+      if (!img.alt || img.alt === "") {
+        // Get the labels for the image
+        const imagePromise = azure_call(img.src)
+          .then(imageDescription => {
+            // Set the alt text to the labels
+            console.log("imageDesc: ", imageDescription);
+            img.alt = "Generated Text: " + imageDescription;
+          });
+
+        imagePromises.push(imagePromise);
+      }
     }
+
+    // Wait for all promises to resolve
+    Promise.all(imagePromises)
+      .then(() => {
+        // All image alt attributes have been set
+        console.log("All alt attributes have been set.");
+      })
+      .catch(error => {
+        console.error("Error setting alt attributes:", error);
+      });
 } // end main
 
 main();

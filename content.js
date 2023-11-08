@@ -1,96 +1,87 @@
-// function uploades the image url to the server
-async function testUpload(url){
-        var requestOptions = {
-      method: 'POST',
-      redirect: 'follow'
-    };
-    
-    result = await fetch("http://localhost:8000/uploadImage?url="+url, requestOptions);
-    return result.text();
-      // .then(response => response.text())
-      // .then(result => console.log(result), console.log(url))
-      // .catch(error => console.log('error', error));      
-}
+// Description: This file contains the code to make the API call to Azure Cognitive Services Computer Vision API
 
-function createResponse(json) {
-  let response = "";
-  let choices = removePeriod(json.choices);
-  if (choices.length > 0) {
-      response = json.choices[0].text;
-  }
-  return response;
-}
+// Make the API call
+async function analyzeImage(imageUrl) {
+  console.log('\n-----Request to Azure-----\n');
+  console.log(imageUrl);
+  // make the request format for the API call
+  // Azure Vision AI API endpoint
+  const endpoint = 'https://altifyimagecaptioning.cognitiveservices.azure.com/vision/v3.1/analyze?visualFeatures=Description&language=en';
 
-function removePeriod(json) {
-  json.forEach(function (element, index) {
-      if (element === ".") {
-          json.splice(index, 1);
-      }
+  // API key or subscription key
+  const subscriptionKey = '74126c3d9f5c4f0c8c4c43cfeaca8474';
+
+  // Image URL as public https
+  // EXAMPLE:
+  // const imageUrl = 'https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/media/quickstarts/presentation.png'; // or you can use binary image data
+
+  // Request headers
+  const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Ocp-Apim-Subscription-Key': subscriptionKey,
   });
-  return json;
-}
 
+  // Request body
+  const requestBody = {
+      url: imageUrl, // You can also use 'binary' if you're sending image data instead of a URL.
+  };
 
-async function openAI_API_Completions(prompt) {
-  const API_KEY = "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";  // Replace with OpenAI API key
-  // Ensure the API key is provided
-  if (!API_KEY) {
-      console.error("Please provide your OpenAI API key.");
-      return;
-  }
+  // Construct the request
+  const request = new Request(endpoint, {
+      method: 'POST',
+      redirect: 'follow',
+      headers: headers,
+      body: JSON.stringify(requestBody),
+  });
 
-  try {
-      const response = await fetch('https://api.openai.com/v1/completions', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + API_KEY
-          },
-          body: JSON.stringify({
-              'model': "text-davinci-003",
-              'prompt': prompt,
-              'temperature': 0.5,
-              'max_tokens': 100,
-          })
+  return await fetch(request)
+      .then((response) => {
+          if (response.ok) {
+              return response.text();
+          } else {
+              // display response status text in the console if an error occurs
+              console.log('\n-----ERROR Response from Azure-----\n');
+              console.log(response)
+              console.log(response.status);
+              console.log(response.statusText);
+              throw new Error('Request failed.');
+          }
+      })
+      .then(data => {
+          // Handle the response data here
+          console.log('\n-----Response from Azure-----\n');
+          data = JSON.parse(data);
+          console.log(data);
+
+          // Display the image caption
+          console.log('\n-----Image Description-----\n');
+          console.log(data.description.captions[0]);
+
+          return data.description.captions[0].text;
+      })
+      .catch(error => {
+          // Handle any errors
+          console.error(error);
       });
-      if (!response.ok) {
-          console.error("HTTP ERROR: " + response.status + "\n" + response.statusText);
-      } else {
-          const data = await response.json();
-          return createResponse(data);
-      }
-  } catch (error) {
-      console.error("ERROR: " + error);
-  }
-} // end openAI_API_Completions
-
-// start of main code
-let images = document.getElementsByTagName('img');
-// let images = 'https://etherjump.game/assets/whiteLogo.png';
-for (img of images){
-  if (!img.alt || img.alt === "") {
-    img.alt = "This image was missing alt text... bummer.";
-    const labels = testUpload(img.src);
-    output = 'test';
-    labels.then(function(result){
-      if (result.length != 2){
-        console.log("alt text generated for image: " + result);
-        img.alt = result;
-        // for the length of the result, add each label to the prompt
-        // const prompt = "Give a brief 15 word description for an image with the following labels: " + result;
-        // // print out all the labels from the result individually
-        
-        // openAI_API_Completions(prompt).then(function(result){
-        //   console.log("alt text generated:" + result);
-        
-        // });
-      }
-      else {
-        console.log("no alt text generated for image")
-      }
-    });
-  }
-}
+} // end analyzeImage
 
 
-// end of main code
+
+async function main(){
+    // get all the images on the current web page
+    let images = document.getElementsByTagName('img');
+
+    for (img of images){
+        // if the image does not have alt text
+        if (!img.alt || img.alt === "") {
+            // set the alt text to a default message
+            img.alt = "This image was missing alt text... bummer.";
+            // get the labels for the image
+            const imageDescription = await analyzeImage(img.src);
+            // set the alt text to the labels
+            img.alt = "alt text generated for image: " + imageDescription;
+        }
+    }
+} // end main
+
+main();

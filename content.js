@@ -6,10 +6,6 @@ async function analyzeImage(imageUrl) {
   console.log(imageUrl);
   // make the request format for the API call
   // Azure Vision AI API endpoint
-  const endpoint = 'https://altifyimagecaptioning.cognitiveservices.azure.com/vision/v3.1/analyze?visualFeatures=Description&language=en';
-
-  // API key or subscription key
-  const subscriptionKey = '74126c3d9f5c4f0c8c4c43cfeaca8474';
 
   // Image URL as public https
   // EXAMPLE:

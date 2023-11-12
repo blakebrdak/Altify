@@ -7,7 +7,7 @@ let input3;
 let input4;
 let input5;
 let array = [input1, input2, input3, input4, input5]
-
+chrome.runtime.sendMessage({ action: "modify_status", status: "test_waiting" });
 function getValue(argName) {
     return new Promise((resolve, reject) => {
         chrome.storage.sync.get(argName, function (data) {
@@ -105,6 +105,7 @@ async function main(){
             img.alt = "alt text generated for image: " + imageDescription;
         }
     }
+    chrome.runtime.sendMessage({ action: "modify_status", status: "test_finish", data: "test message" });
 } // end main
-useGlobalVarAsync()
-// main();
+// useGlobalVarAsync()
+main();

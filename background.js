@@ -1,4 +1,4 @@
-let currentStatus = 'idle';
+let currentStatus = 'Refresh the Page';
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     if (message.action === 'modify_status') {

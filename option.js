@@ -22,7 +22,7 @@ saveButton.addEventListener('click', () => {
   // }
     const inputValue0 = array[0].value;
     // const inputValue = userInput1.value;
-    chrome.storage.sync.set({"userInput0":inputValue0}, () => {
+    chrome.storage.sync.set({"userInput1":inputValue0}, () => {
       if (chrome.runtime.lastError) {
         console.log('Error: ', chrome.runtime.lastError);
     } else {
@@ -31,7 +31,7 @@ saveButton.addEventListener('click', () => {
     });
     const inputValue1 = array[1].value;
     // const inputValue = userInput1.value;
-    chrome.storage.sync.set({"userInput1":inputValue1}, () => {
+    chrome.storage.sync.set({"userInput2":inputValue1}, () => {
       if (chrome.runtime.lastError) {
         console.log('Error: ', chrome.runtime.lastError);
     } else {
@@ -40,7 +40,7 @@ saveButton.addEventListener('click', () => {
     });
     const inputValue2 = array[2].value;
     // const inputValue = userInput1.value;
-    chrome.storage.sync.set({"userInput2":inputValue2}, () => {
+    chrome.storage.sync.set({"userInput3":inputValue2}, () => {
       if (chrome.runtime.lastError) {
         console.log('Error: ', chrome.runtime.lastError);
     } else {
@@ -49,7 +49,7 @@ saveButton.addEventListener('click', () => {
     });
     const inputValue3 = array[3].value;
     // const inputValue = userInput1.value;
-    chrome.storage.sync.set({"userInput3":inputValue3}, () => {
+    chrome.storage.sync.set({"userInput4":inputValue3}, () => {
       if (chrome.runtime.lastError) {
         console.log('Error: ', chrome.runtime.lastError);
     } else {
@@ -58,7 +58,7 @@ saveButton.addEventListener('click', () => {
     });
     const inputValue4 = array[4].value;
     // const inputValue = userInput1.value;
-    chrome.storage.sync.set({"userInput4":inputValue4}, () => {
+    chrome.storage.sync.set({"userInput5":inputValue4}, () => {
       if (chrome.runtime.lastError) {
         console.log('Error: ', chrome.runtime.lastError);
     } else {

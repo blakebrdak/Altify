@@ -7,7 +7,7 @@ let input3;
 let input4;
 let input5;
 let array = [input1, input2, input3, input4, input5]
-chrome.runtime.sendMessage({ action: "modify_status", status: "test_waiting" });
+chrome.runtime.sendMessage({ action: "modify_status", status: "Waiting" });
 function getValue(argName) {
     return new Promise((resolve, reject) => {
         chrome.storage.sync.get(argName, function (data) {
@@ -25,6 +25,7 @@ async function useGlobalVarAsync() {
     input3 = await getValue('userInput3')
     input4 = await getValue('userInput4')
     input5 = await getValue('userInput5')
+    await main();
 }
 
 async function analyzeImage(imageUrl) {
@@ -70,6 +71,7 @@ async function analyzeImage(imageUrl) {
               console.log(response)
               console.log(response.status);
               console.log(response.statusText);
+              chrome.runtime.sendMessage({ action: "modify_status", status: "Error" });
               throw new Error('Request failed.');
           }
       })
@@ -105,7 +107,7 @@ async function main(){
             img.alt = "alt text generated for image: " + imageDescription;
         }
     }
-    chrome.runtime.sendMessage({ action: "modify_status", status: "test_finish", data: "test message" });
+    chrome.runtime.sendMessage({ action: "modify_status", status: "Finish", data: "test message" });
 } // end main
-// useGlobalVarAsync()
-main();
+useGlobalVarAsync()
+// main();

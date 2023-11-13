@@ -1,83 +1,76 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+    background-color: #f4f4f4;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
 
-        header {
-            background-color: #2C3E50;
-            padding: 1em;
-            text-align: center;
-            color: white;
-        }
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        nav ul {
-            padding: 0;
-            list-style: none;
-            background: #3498DB;
-            text-align: center;
-            margin: 0;
-        }
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
 
-        nav ul li {
-            display: inline;
-        }
+form {
+    display: grid;
+    grid-gap: 20px;
+}
 
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            padding: 0 15px;
-            display: inline-block;
-        }
+div {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+}
 
-        .container {
-            background-color: white;
-            padding: 20px;
-            margin: 15px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.2);
-        }
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #666;
+}
 
-        h1 {
-            text-align: center;
-            color: #2C3E50;
-        }
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
-        form {
-            margin-top: 20px;
-        }
+p {
+    font-style: italic;
+    color: #888;
+}
 
-        label {
-            display: block;
-            margin: 15px 0 5px;
-        }
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
 
-        input[type="text"] {
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #bdc3c7;
-            width: 100%;
-        }
-
-        p {
-            font-size: 0.8em;
-            color: #7f8c8d;
-            margin-top: 5px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #3498DB;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            display: block;
-            margin: 20px 0;
-            width: 100%;
-        }
-
-        button:hover {
-            background-color: #2980B9;
-        }
+button:hover {
+    background-color: #4cae4c;
+}

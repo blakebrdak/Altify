@@ -1,67 +1,38 @@
 /* Reset some default styling in browsers */
-body, h1, ul, li, form, label {
-    margin: 0;
-    padding: 0;
-}
-/* Style the body */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-}
-/* Style the header */
-header {
-    background: #50b3a2;
-    color: #ffffff;
-    text-align: center;
-    padding: 1em 0;
-}
-/* Style navigation */
-nav ul {
-    list-style: none;
-}
-nav ul li {
-    display: inline; /* Align links horizontally */
-    margin-right: 20px;
-}
-nav a {
-    color: #ffffff;
-    text-decoration: none;
-}
-/* Style main content */
-main {
-    padding: 20px;
-}
-.container {
-    background-color: #50b3a2;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.2);
-    margin: 20px 0;
-    width: 250px;
-    height: 250px
-}
-/* Style form */
-form {
-    display: flex;
-    flex-direction: column;
-}
-label, input, button {
-    margin-bottom: 10px;
-}
-p {
-    font-size: 2.8em;
-    color: #ffffff;
-    margin-top: 5px;
-}
-button {
-    background-color: #50b3a2;
-    color: #ffffff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #4a9188;
-}
+body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            border: 2px solid #ddd;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: white;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #535357;
+        }
+
+        #output {
+            color: #51a419;
+            font-family: 'Times New Roman', serif;
+            font-size: 16px;
+        }
+
+        p {
+            color: #51a419;
+        }

@@ -15,7 +15,7 @@ function getValue(argName) {
             if (data[argName] !== undefined) {
                 resolve(data[argName]);
             } else {
-                reject('No value found for'+argName);
+                resolve(0);
             }
         });
     });

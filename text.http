@@ -1,0 +1,8 @@
+# GET https://altify-blake-resource.cognitiveservices.azure.com/vision/v3.1/analyze
+GET https://us-central1-altify-404015.cloudfunctions.net/Azure-Request-Middleman
+
+{
+    "url" : "https://blakebrdak.github.io/Altify/images/Camera.jfif"
+}
+
+# curl -X POST https://us-central1-altify-404015.cloudfunctions.net/Azure-Request-Middleman -H "Content-Type: application/json" -d '{"url": "https://blakebrdak.github.io/Altify/images/Camera.jfif"}'

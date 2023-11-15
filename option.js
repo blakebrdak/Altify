@@ -1,11 +1,12 @@
-const userInput1 = document.getElementById('input1');
-const userInput2 = document.getElementById('input2');
-const userInput3 = document.getElementById('input3');
-const userInput4 = document.getElementById('input4');
-const userInput5 = document.getElementById('input5');
-const saveButton = document.getElementById('saveButton');
-let array = [userInput1, userInput2, userInput3, userInput4, userInput5]
+
 saveButton.addEventListener('click', () => {
+  const userInput1 = document.getElementById('input1');
+  const userInput2 = document.getElementById('input2');
+  // const userInput3 = document.getElementById('input3');
+  // const userInput4 = document.getElementById('input4');
+  // const userInput5 = document.getElementById('input5');
+  const saveButton = document.getElementById('saveButton');
+  let array = [userInput1, userInput2]
   // for (let i = 0; i < array.length; i++) {
   //   const inputValue = array[i].value;
   //   // const inputValue = userInput1.value;
@@ -22,7 +23,7 @@ saveButton.addEventListener('click', () => {
   // }
     const inputValue0 = array[0].value;
     // const inputValue = userInput1.value;
-    chrome.storage.sync.set({"userInput1":inputValue0}, () => {
+    chrome.storage.sync.set({ "userInput1": inputValue0 }, () => {
       if (chrome.runtime.lastError) {
         console.log('Error: ', chrome.runtime.lastError);
     } else {
@@ -38,33 +39,33 @@ saveButton.addEventListener('click', () => {
         console.log('Value is set to ' + inputValue1);
       }
     });
-    const inputValue2 = array[2].value;
-    // const inputValue = userInput1.value;
-    chrome.storage.sync.set({"userInput3":inputValue2}, () => {
-      if (chrome.runtime.lastError) {
-        console.log('Error: ', chrome.runtime.lastError);
-    } else {
-        console.log('Value is set to ' + inputValue2);
-      }
-    });
-    const inputValue3 = array[3].value;
-    // const inputValue = userInput1.value;
-    chrome.storage.sync.set({"userInput4":inputValue3}, () => {
-      if (chrome.runtime.lastError) {
-        console.log('Error: ', chrome.runtime.lastError);
-    } else {
-        console.log('Value is set to ' + inputValue3);
-      }
-    });
-    const inputValue4 = array[4].value;
-    // const inputValue = userInput1.value;
-    chrome.storage.sync.set({"userInput5":inputValue4}, () => {
-      if (chrome.runtime.lastError) {
-        console.log('Error: ', chrome.runtime.lastError);
-    } else {
-        console.log('Value is set to ' + inputValue4);
-      }
-    });
+    // const inputValue2 = array[2].value;
+    // // const inputValue = userInput1.value;
+    // chrome.storage.sync.set({"userInput3":inputValue2}, () => {
+    //   if (chrome.runtime.lastError) {
+    //     console.log('Error: ', chrome.runtime.lastError);
+    // } else {
+    //     console.log('Value is set to ' + inputValue2);
+    //   }
+    // });
+    // const inputValue3 = array[3].value;
+    // // const inputValue = userInput1.value;
+    // chrome.storage.sync.set({"userInput4":inputValue3}, () => {
+    //   if (chrome.runtime.lastError) {
+    //     console.log('Error: ', chrome.runtime.lastError);
+    // } else {
+    //     console.log('Value is set to ' + inputValue3);
+    //   }
+    // });
+    // const inputValue4 = array[4].value;
+    // // const inputValue = userInput1.value;
+    // chrome.storage.sync.set({"userInput5":inputValue4}, () => {
+    //   if (chrome.runtime.lastError) {
+    //     console.log('Error: ', chrome.runtime.lastError);
+    // } else {
+    //     console.log('Value is set to ' + inputValue4);
+    //   }
+    // });
 
     alert('save successfully!')
   document.getElementById('status').textContent = 'save successfully!';

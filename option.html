@@ -11,16 +11,20 @@
             <h1>Setting Page</h1>
             <form method="post">
                 <div>
-                    <label for="input1">Input 1:</label>
-                    <input type="text" id="input1" name="input1" required>
-                    <p>This is the first input field.</p>
+                    <label id="nothing">Language:</label>
+                    <select id="input1" name="fruits">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="ja">Japanese</option>
+                        <option value="zh">Chinese Simplified</option>
+                    </select>
                 </div>
                 <div>
-                    <label for="input2">Input 2:</label>
-                    <input type="text" id="input2" name="input2" required>
-                    <p>This is the second input field.</p>
+                    <label>
+                        <input type="checkbox" id="input2" value="1"> Generate text for all images:
+                    </label>
                 </div>
-                <div>
+                <!-- <div>
                     <label for="input3">Input 3:</label>
                     <input type="text" id="input3" name="input3" required>
                     <p>This is the third input field.</p>
@@ -33,8 +37,8 @@
                 <div>
                     <label for="input5">Input 5:</label>
                     <input type="text" id="input5" name="input5" required>
-                    <p>This is the fifth input field.</p>
-                </div>
+                    <p>This is the fifth input field.</p> -->
+                <!-- </div> -->
                 <button type="submit" id="saveButton">Submit</button>
             </form>
         </div>

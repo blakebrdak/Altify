@@ -1,43 +1,21 @@
-
 // Description: This file contains the code to make the API call to Azure Cognitive Services Computer Vision API
 
-// Make the API call
-let input1;
-let input2;
-let input3;
-let input4;
-let input5;
-let array = [input1, input2, input3, input4, input5]
-chrome.runtime.sendMessage({ action: "modify_status", status: "Waiting" });
-function getValue(argName) {
-    return new Promise((resolve, reject) => {
-        chrome.storage.sync.get(argName, function (data) {
-            if (data[argName] !== undefined) {
-                resolve(data[argName]);
-            } else {
-                resolve(0);
-            }
-        });
-    });
-}
-async function useGlobalVarAsync() {
-    input1 = await getValue('userInput1')
-    input2 = await getValue('userInput2')
-    input3 = await getValue('userInput3')
-    input4 = await getValue('userInput4')
-    input5 = await getValue('userInput5')
-    await main();
-}
+var lang = ''
+// background.js or any other main extension script
+chrome.storage.sync.get('userInput1', function (data) {
+  lang = data.option || 'en';
+  console.log('Option retrieved-lang:', lang);
 
+  // Use the option value as needed in your extension logic
+});
+
+
+// Make the API call
 async function analyzeImage(imageUrl) {
   console.log('\n-----Request to Azure-----\n');
   console.log(imageUrl);
   // make the request format for the API call
   // Azure Vision AI API endpoint
-  const endpoint = 'https://altifyimagecaptioning.cognitiveservices.azure.com/vision/v3.1/analyze?visualFeatures=Description&language=en';
-
-  // API key or subscription key
-  const subscriptionKey = '74126c3d9f5c4f0c8c4c43cfeaca8474';
 
   // Image URL as public https
   // EXAMPLE:
@@ -61,7 +39,7 @@ async function analyzeImage(imageUrl) {
       headers: headers,
       body: JSON.stringify(requestBody),
   });
-
+  
   return await fetch(request)
       .then((response) => {
           if (response.ok) {
@@ -72,7 +50,6 @@ async function analyzeImage(imageUrl) {
               console.log(response)
               console.log(response.status);
               console.log(response.statusText);
-              chrome.runtime.sendMessage({ action: "modify_status", status: "Error" });
               throw new Error('Request failed.');
           }
       })
@@ -94,21 +71,86 @@ async function analyzeImage(imageUrl) {
       });
 } // end analyzeImage
 
+async function azure_call(imgURL) {
+    const url = "https://us-central1-altify-404015.cloudfunctions.net/Azure-Request-Middleman";
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Set the content type for JSON data
+        },
+        body: `{"url": "${imgURL}"}` // Convert the data to JSON format
+      })
+        .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+        return response.text(); // or response.text() for plain text
+        })
+        .then(data => {
+          return data;
+        })
+        .catch(error => {
+          console.error('There was a problem with the fetch operation:', error);
+        });
+    return response;
+}
+
 async function main(){
     // get all the images on the current web page
+    // 2 second timeout ensures images have had adequate time to load
+    // Potentially replace with something that makes it execute when page is loaded?
+    setTimeout( () => {
     let images = document.getElementsByTagName('img');
-    for (img of images){
-        // if the image does not have alt text
-        if (!img.alt || img.alt === "") {
-            // set the alt text to a default message
-            img.alt = "This image was missing alt text... bummer.";
-            // get the labels for the image
-            const imageDescription = await analyzeImage(img.src);
-            // set the alt text to the labels
-            img.alt = "alt text generated for image: " + imageDescription;
+
+    // for (img of images){
+    //     // if the image does not have alt text
+    //     if (!img.alt || img.alt === "") {
+    //         // set the alt text to a default message
+    //         //img.alt = "This image was missing alt text... bummer.";
+    //         // get the labels for the image
+    //         azure_call(img.src)
+    //             .then(imageDescription => {
+    //                 // set the alt text to the labels
+    //                 console.log("imageDesc: ", imageDescription)
+    //                 img.alt = "alt text generated for image: " + imageDescription;
+    //             })
+            
+    //     }
+    // }
+    const imagePromises = [];
+
+    for (const img of images) {
+      // If the image does not have alt text
+      if (!img.alt || img.alt === "") {
+        // check image is larger than 50px by 50px
+        // console.log('width: ', img.width, " height: ", img.height)
+        if (img.width < 50 || img.height < 50) { // there is a limit on image size for the API
+          console.log("Image is too small to generate alt text.");
+          continue; // skip this image
         }
+        
+        // Get the labels for the image
+        const imagePromise = azure_call(img.src)
+          .then(imageDescription => {
+            // Set the alt text to the labels
+            console.log("imageDesc: ", imageDescription);
+            img.alt = "Generated Text: " + imageDescription;
+          });
+
+        imagePromises.push(imagePromise);
+      }
     }
-    chrome.runtime.sendMessage({ action: "modify_status", status: "Finish", data: "test message" });
+
+    // Wait for all promises to resolve
+    Promise.all(imagePromises)
+      .then(() => {
+        // All image alt attributes have been set
+        console.log("All alt attributes have been set.");
+      })
+      .catch(error => {
+        console.error("Error setting alt attributes:", error);
+      });
+    }, 2000)
 } // end main
-useGlobalVarAsync()
-// main();
+
+main();

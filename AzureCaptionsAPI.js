@@ -8,8 +8,6 @@ async function analyzeImage(imageUrl) {
     // Azure Vision AI API endpoint
     const endpoint = 'https://altify-blake-resource.cognitiveservices.azure.com/vision/v3.1/analyze?visualFeatures=Description&language=en';
 
-    // API key or subscription key
-    const subscriptionKey = '577414208d1545fab49275a1268beacd';
 
     // Image URL as public https
     // EXAMPLE:

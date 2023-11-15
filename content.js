@@ -87,6 +87,9 @@ async function azure_call(imgURL) {
 
 async function main(){
     // get all the images on the current web page
+    // 2 second timeout ensures images have had adequate time to load
+    // Potentially replace with something that makes it execute when page is loaded?
+    setTimeout( () => {
     let images = document.getElementsByTagName('img');
 
     // for (img of images){
@@ -109,6 +112,13 @@ async function main(){
     for (const img of images) {
       // If the image does not have alt text
       if (!img.alt || img.alt === "") {
+        // check image is larger than 50px by 50px
+        // console.log('width: ', img.width, " height: ", img.height)
+        if (img.width < 50 || img.height < 50) { // there is a limit on image size for the API
+          console.log("Image is too small to generate alt text.");
+          continue; // skip this image
+        }
+        
         // Get the labels for the image
         const imagePromise = azure_call(img.src)
           .then(imageDescription => {
@@ -130,6 +140,7 @@ async function main(){
       .catch(error => {
         console.error("Error setting alt attributes:", error);
       });
+    }, 2000)
 } // end main
 
 main();

@@ -3,7 +3,7 @@
 var lang = ''
 // background.js or any other main extension script
 chrome.storage.sync.get('userInput1', function (data) {
-  lang = data.option || 'en';
+  lang = data.userInput1;
   console.log('Option retrieved-lang:', lang);
 
   // Use the option value as needed in your extension logic

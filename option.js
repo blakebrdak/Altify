@@ -1,12 +1,11 @@
-
+const userInput1 = document.getElementById('input1');
+const userInput2 = document.getElementById('input2');
+// const userInput3 = document.getElementById('input3');
+// const userInput4 = document.getElementById('input4');
+// const userInput5 = document.getElementById('input5');
+const saveButton = document.getElementById('saveButton');
+let array = [userInput1, userInput2]
 saveButton.addEventListener('click', () => {
-  const userInput1 = document.getElementById('input1');
-  const userInput2 = document.getElementById('input2');
-  // const userInput3 = document.getElementById('input3');
-  // const userInput4 = document.getElementById('input4');
-  // const userInput5 = document.getElementById('input5');
-  const saveButton = document.getElementById('saveButton');
-  let array = [userInput1, userInput2]
   // for (let i = 0; i < array.length; i++) {
   //   const inputValue = array[i].value;
   //   // const inputValue = userInput1.value;
@@ -21,7 +20,7 @@ saveButton.addEventListener('click', () => {
   //     }
   //   });
   // }
-    const inputValue0 = array[0].value;
+    const inputValue0 = userInput1.value;
     // const inputValue = userInput1.value;
     chrome.storage.sync.set({ "userInput1": inputValue0 }, () => {
       if (chrome.runtime.lastError) {
@@ -30,7 +29,7 @@ saveButton.addEventListener('click', () => {
         console.log('Value is set to ' + inputValue0);
       }
     });
-    const inputValue1 = array[1].value;
+    const inputValue1 = userInput2.checked;
     // const inputValue = userInput1.value;
     chrome.storage.sync.set({"userInput2":inputValue1}, () => {
       if (chrome.runtime.lastError) {
@@ -73,10 +72,12 @@ saveButton.addEventListener('click', () => {
 });
 
 window.onload = function() {
-  for (let i = 0; i < array.length; i++) {
-    let key_i = 'userInput' + String(i)
-    chrome.storage.sync.get(key_i, (data) => {
-      array[i].value = data[key_i];
+    let key1 = 'userInput1'
+    chrome.storage.sync.get(key1, (data) => {
+      userInput1.value = data[key1];
     });
-  }
+    let key2 = 'userInput2'
+    chrome.storage.sync.get(key2, (data) => {
+      userInput2.checked = data[key2];
+    });
 }

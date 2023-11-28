@@ -6,20 +6,6 @@ const userInput2 = document.getElementById('input2');
 const saveButton = document.getElementById('saveButton');
 let array = [userInput1, userInput2]
 saveButton.addEventListener('click', () => {
-  // for (let i = 0; i < array.length; i++) {
-  //   const inputValue = array[i].value;
-  //   // const inputValue = userInput1.value;
-  //   let key_i = 'userInput' + String(i);
-  //   let obj = {};
-  //   obj[key_i] = inputValue;
-  //   chrome.storage.sync.set(obj, () => {
-  //     if (chrome.runtime.lastError) {
-  //       console.log('Error: ', chrome.runtime.lastError);
-  //   } else {
-  //       console.log('Value is set to ' + inputValue);
-  //     }
-  //   });
-  // }
     const inputValue0 = userInput1.value;
     // const inputValue = userInput1.value;
     chrome.storage.sync.set({ "userInput1": inputValue0 }, () => {

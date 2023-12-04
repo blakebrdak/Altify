@@ -113,6 +113,47 @@ async function azure_call(imgURL) {
     return response;
 }
 
+function injectSidebar() {
+    // fetch(chrome.runtime.getURL('sidebar.html'))
+    //     .then(response => response.text())
+    //     .then(data => {
+    //         document.body.insertAdjacentHTML('beforeend', data);
+    //         document.getElementById('toggleSidebar').addEventListener('click', toggleSidebar);
+    //     }).catch(err => console.log(err));
+    fetch(chrome.runtime.getURL('sidebar.html'))
+        .then(response => response.text())
+        .then(data => {
+            let div = document.createElement('div');
+            div.innerHTML = data;
+
+            document.body.appendChild(div);
+
+            let cssLink = document.createElement('link');
+            cssLink.href = chrome.runtime.getURL('/css/sidebar.css');
+            cssLink.type = 'text/css';
+            cssLink.rel = 'stylesheet';
+            document.head.appendChild(cssLink);
+            let mySidebar = document.getElementById('mySidebar');
+            let toggleButton = document.getElementById('toggleButton');
+            toggleButton.addEventListener('click', function() {
+                if (mySidebar.style.width === '300px') {
+                    mySidebar.style.width = '0';
+                    toggleButton.innerHTML = 'Open Sidebar';
+                } else {
+                    mySidebar.style.width = '300px';
+                    toggleButton.innerHTML = 'Close Sidebar';
+                }
+            });
+        })
+        .catch(err => console.error('Error loading sidebar:', err));
+}
+
+function closeSidebar() {
+    document.getElementById('mySidebar').style.width = '0';
+}
+
+injectSidebar();
+
 async function main(){
     // get all the images on the current web page
     // 2 second timeout ensures images have had adequate time to load

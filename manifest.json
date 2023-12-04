@@ -24,8 +24,11 @@
       "activeTab",
       "contextMenus",
       "storage"
-    ]    
-
+    ],
+    "web_accessible_resources": [{
+            "resources": ["sidebar.html", "/css/sidebar.css"],
+            "matches": ["<all_urls>"]
+    }]
   }
 
 

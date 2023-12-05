@@ -39,15 +39,15 @@ document.getElementById("nextPage").addEventListener("click", function() {
         document.getElementById("content").innerHTML = `
         <img class="logo" src="images/Logo.PNG">
         <h1>Welcome to Altify!</h1>
-        <p id="output">waiting</p>
+        <p id="output">Altify is working in the background!</p>
         `
     }
     else {
         document.getElementById("content1").innerHTML = `
         <h1 id="header">Enjoy Your Reading</h1>
-        <p>Finish settings, Altify will work for you automatically in background!</p>
+        <p>Altify works automatically in the background! Just get browsing, and Altify will fill in Alt text where it is missing, keeping your browsing experience seamless.</p>
         <label>
-            <input type="checkbox" id="if_remind" value="1"> Never Show Again:
+            <input type="checkbox" id="if_remind" value="1"> Don't show this again:
         </label>
         `;
     }

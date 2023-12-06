@@ -139,3 +139,37 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 });
+
+
+// to dynamically display second checkbox value
+document.addEventListener('DOMContentLoaded', function() {
+  var checkSelect = document.getElementById('input3');
+
+  // Retrieve the saved checkbox state from chrome.storage.sync
+  chrome.storage.sync.get(["userInput3"], function(data) {
+      var savedCheck = data.userInput3; // Fix: Change "userInput1" to "userInput2"
+
+      // Remove the event listener temporarily
+      checkSelect.removeEventListener('change', checkboxChangeHandler);
+
+      // Set the checkbox state based on the saved value
+      if (savedCheck !== undefined) {
+          checkSelect.checked = savedCheck; // Assuming savedCheck is a boolean
+      }
+
+      // Add the event listener back
+      checkSelect.addEventListener('change', checkboxChangeHandler);
+  });
+
+  // Add an event listener to save the checkbox state when it changes
+  checkSelect.addEventListener('change', checkboxChangeHandler);
+
+  function checkboxChangeHandler() {
+      var isChecked = checkSelect.checked;
+
+      // Save the checkbox state to chrome.storage.sync
+      chrome.storage.sync.set({ 'userInput3': isChecked }, function() {
+          console.log("Checkbox state is set to " + isChecked);
+      });
+  }
+});

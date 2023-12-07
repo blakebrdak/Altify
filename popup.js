@@ -45,7 +45,7 @@ document.getElementById("nextPage").addEventListener("click", function() {
     else {
         document.getElementById("content1").innerHTML = `
         <h1 id="header">Enjoy Your Reading</h1>
-        <p>Altify works automatically in the background! Just get browsing, and Altify will fill in Alt text where it is missing, keeping your browsing experience seamless.</p>
+        <p>Altify works automatically in the background! Just get browsing, and Altify will fill in Alt text where it is missing, keeping your browsing experience seamless. Use the sidebar to view generated text!</p>
         <label>
             <input type="checkbox" id="if_remind" value="1"> Don't show this again:
         </label>
